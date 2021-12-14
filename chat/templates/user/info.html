@@ -1,0 +1,22 @@
+{% extends "chat/base.html" %}
+
+{% block content %}
+    {% load poll_extras %}
+    <div class="content-info">
+        <h1>Information</h1>
+        <div class="info-bx">
+            <div class="img-user">
+                <img id="avatar-info" src="{{info_entity.imagelink.url}}">    
+            </div> 
+            <div class="config-info">
+                <p class="p-info">User Name: <span>{{username}}</span></p>  
+                <p class="p-info">Day Of Birth: <span>{{info_entity.birthday|date:'d/m/Y'}}</span></p>  
+                <div class="btn-info">
+                    <a href="{% url 'Chat:edit_account' request.user.username %}">Update</a>
+                    <a href="">Change Password</a>
+                    <a class="btn-delete-acc" href="">Delete Account</a>
+                </div>          
+            </div>              
+        </div>         
+    </div>
+{% endblock %}

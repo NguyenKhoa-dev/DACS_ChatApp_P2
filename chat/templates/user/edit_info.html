@@ -1,0 +1,44 @@
+{% extends "chat/base.html" %}
+
+{% block content %}
+    {% load poll_extras %}
+    <div class="content-info edit">
+        <h1>Edit Information</h1>
+        <form class="info-bx"  method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="img-user">
+                <label for="file-upload">
+                    <ion-icon name="camera"></ion-icon>
+                    <input type="file" name="profileimage" id="file-upload">
+                </label>
+                <img id="avatar-info" src="{{info_entity.imagelink.url}}">    
+            </div> 
+            <div class="config-info">
+                <label for="datepicker">User Name: <input type="text" name="username" id="user-name-info" value={{info_entity.user}}></label>  
+                <label for="datepicker">Day of birth: <input type="date" name="birthday" value="{{info_entity.birthday|date:'Y-m-d'}}"></label>  
+                <div class="btn-info">
+                    <button type="submit">Confirm</button>
+                </div>          
+            </div>              
+        </form>         
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    let btnFile = document.querySelector("#file-upload");
+    let img = document.querySelector("#avatar-info");
+
+    btnFile.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const result = reader.result;
+                img.src = result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+{% endblock %}
