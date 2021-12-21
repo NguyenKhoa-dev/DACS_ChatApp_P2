@@ -25,16 +25,19 @@ class UserConsumer(AsyncWebsocketConsumer):
             self.user_group_id,
             self.channel_name
         )
-        infors = await self.set_status(False,self.user_id)
-        for info in infors:
-            await self.channel_layer.group_send(
-                f'user',
-                {
-                    'type':'user_status',
-                    'user_id':info.user.id,
-                    'status': info.status
-                }
-            )
+        try:
+            infors = await self.set_status(False,self.user_id)
+            for info in infors:
+                await self.channel_layer.group_send(
+                    f'user',
+                    {
+                        'type':'user_status',
+                        'user_id':info.user.id,
+                        'status': info.status
+                    }
+                )
+        except:
+            pass
         
     async def receive(self, text_data):
         data = json.loads(text_data)

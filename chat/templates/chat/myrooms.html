@@ -42,24 +42,6 @@
             {%endfor%}
         </div>
     </section>
-
-    {%if messages%}
-        {%for message in messages %}                                    
-            <script>
-                $(document).ready(function() {
-                    $('#message-delete').html("{{message}}")
-                    $('#message-dialog-delete').dialog({
-                    autoOpen: true,
-                    show: {effect: "blind", duration: 500},
-                    hide: {effect: "explode", duration: 500},
-                    height: "auto", 
-                    resizable: false,
-                    title: "Messages"  
-                    })
-                })
-            </script>
-        {%endfor%}    
-    {%endif%} 
 {% endblock %}
 
 {% block script %}

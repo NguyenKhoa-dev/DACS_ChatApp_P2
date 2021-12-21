@@ -1,11 +1,11 @@
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.contrib import messages
-from .forms import CreateUserForm
+from .forms import ChangingPasswordForm, CreateUserForm
 from .models import Message, Room, RoomHistory,Information
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -200,3 +200,24 @@ def edit_account_view(request,user_name):
         
     return render(request,"user/edit_info.html",{"info_entity":info_entity})
 
+@login_required(login_url='Chat:user')
+def ChangePass(request):
+    info_entity = Information.objects.filter(user=request.user).first()
+    if request.method != 'POST':
+        form = ChangingPasswordForm(request.user)
+    else:
+        form = ChangingPasswordForm(request.user,data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request,user)
+            messages.info(request, 'Password Was Changed Successfully!!!')
+            return redirect('Chat:index')
+    
+    context = {'form':form, "info_entity":info_entity}
+    return render(request,'user/change_password.html',context)
+
+@login_required(login_url='Chat:user')
+def deleteAccount(request):
+    user = User.objects.get(username = request.user.username)
+    user.delete()
+    return redirect('Chat:user')

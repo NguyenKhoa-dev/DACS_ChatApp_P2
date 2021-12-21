@@ -13,6 +13,7 @@
     --white: #f1f1f1;
     --white1: #f1f1f1;
     --white2: #f1f1f1;
+    --white3: #f1f1f1;
     --black: #333;
     --black1: #000;
     --black2: #000;
@@ -42,6 +43,7 @@
     --light-black1: #fff;    
     --white1: #333;
     --white2: #df1829;
+    --white3: #f1f1f1;
     --black: #f1f1f1;
     --black1: #333;
     --black2: #fff;
@@ -1077,4 +1079,83 @@ footer P a:hover {
 .content-info .info-bx .config-info .btn-info a:hover {
     background-color: var(--blue1);
     color: var(--black2);
+}
+
+/* -------------------------- FORM BOX CHANGE PASSWORD --------------------------*/
+.content-change-pwd {
+    width: 100%;
+    padding: 0 100px 100px 100px;
+}
+
+.content-change-pwd h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--blue1);
+}
+
+.flex-bx {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-black1);
+    box-shadow: 5px 5px 10px var(--shadow),
+                inset 2px 2px 10px var(--shadow);
+    padding: 20px 20px;
+    border-radius: 5px;
+}
+
+.flex-bx ul {
+    margin-left: 40px;
+    color: var(--white1);
+}
+
+.flex-bx ul li {
+    margin-bottom: 10px;
+}
+
+.flex-bx form {
+    padding: 20px 20px;
+    text-align: center;
+    border: 1px solid var(--white1);
+    border-radius: 5px;
+}
+
+.flex-bx form p {
+    width: 350px;
+    display: flex;
+    align-items: center;    
+    color: var(--white1);  
+}
+
+.flex-bx form p label {
+    flex: 0.8;  
+    text-align: left;  
+}
+
+.flex-bx form p input {
+    outline: none;
+    height: 100%;
+    transition: linear 0.2s;
+    text-indent: 5px;
+}
+
+.flex-bx form p input:focus {
+    padding: 5px 0;
+}
+
+.flex-bx form button {
+    margin-top: 10px;
+    background-color: var(--blue1);
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    color: var(--black2);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: linear 0.2s;
+}
+
+.flex-bx form button:hover {
+    padding: 10px 30px;
 }

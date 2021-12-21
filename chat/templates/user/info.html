@@ -13,10 +13,35 @@
                 <p class="p-info">Day Of Birth: <span>{{info_entity.birthday|date:'d/m/Y'}}</span></p>  
                 <div class="btn-info">
                     <a href="{% url 'Chat:edit_account' request.user.username %}">Update</a>
-                    <a href="">Change Password</a>
-                    <a class="btn-delete-acc" href="">Delete Account</a>
+                    <a href="{% url 'Chat:changepassword' %}">Change Password</a>
+                    <a class="btn-delete-acc" href="#" onclick="showDeleteAccountDialog()">Delete Account</a>
                 </div>          
             </div>              
         </div>         
     </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    function showDeleteAccountDialog() {
+    $('#message-feature').html("Are you sure to <span class=\"span-dialog\"> Delete Your Account</span>");
+    $('#message-dialog-feature').dialog({
+        autoOpen: true,
+        show: {effect: "blind", duration: 200},
+        hide: {effect: "explode", duration: 200},
+        height: "auto", 
+        resizable: false,
+        title: "Messages",
+        modal: true,
+        buttons: {
+            "Yes": function() {
+                window.location.replace("/deleteAccount/");
+            },
+            "No": function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+}
+</script>
 {% endblock %}
