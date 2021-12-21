@@ -1026,11 +1026,11 @@ footer P a:hover {
     font-weight: 500;
 }
 
-.content-info .info-bx .config-info label input[type=text] {
+.content-info .info-bx .config-info label input[type=text], input[type=email] {
     text-indent: 5px;
 }
 
-.content-info .info-bx .config-info label input[type=text], input[type=date] {
+.content-info .info-bx .config-info label input[type=text], input[type=date], input[type=email] {
     font-size: 0.8em;
     border: 1px solid var(--border-color);   
     width: 165px;

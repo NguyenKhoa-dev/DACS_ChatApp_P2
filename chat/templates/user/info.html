@@ -11,6 +11,11 @@
             <div class="config-info">
                 <p class="p-info">User Name: <span>{{username}}</span></p>  
                 <p class="p-info">Day Of Birth: <span>{{info_entity.birthday|date:'d/m/Y'}}</span></p>  
+                {% if gmail == "" %}
+                    <p class="p-info">Gmail: <span>None</span></p>  
+                {% else %}
+                    <p class="p-info">Gmail: <span>{{gmail}}</span></p>  
+                {% endif %}
                 <div class="btn-info">
                     <a href="{% url 'Chat:edit_account' request.user.username %}">Update</a>
                     <a href="{% url 'Chat:changepassword' %}">Change Password</a>

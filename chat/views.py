@@ -174,12 +174,11 @@ def logoutUser(request):
     return redirect('Chat:user')
 
 def account_view(request,user_name):
-    # getID_room = 
-    if Information.objects.filter(user=request.user).exists() ==False:
+    if Information.objects.filter(user=request.user).exists() == False:
         d= datetime.date(2000,1,1)
         Information.objects.create(user=request.user,imagelink='/person.png',birthday=d)
     info_entity = Information.objects.filter(user=request.user).first()  
-    return render(request,'user/info.html',{'info_entity':info_entity,'username':request.user.username})
+    return render(request,'user/info.html',{'info_entity':info_entity,'username':request.user.username, 'gmail':request.user.email})
 
 @login_required(login_url='Chat:user')
 def edit_account_view(request,user_name):
@@ -188,8 +187,9 @@ def edit_account_view(request,user_name):
         user_name_edit = request.POST.get('username')
         birth_day = request.POST.get('birthday')
         image_link = request.FILES.get('profileimage')
+        gmail = request.POST.get('email')
         
-        User.objects.filter(username=request.user).update(username=user_name_edit)
+        User.objects.filter(username=request.user).update(username=user_name_edit, email=gmail)
         
         info_entity.birthday= birth_day
         if image_link != None:
@@ -198,7 +198,7 @@ def edit_account_view(request,user_name):
         
         return redirect('Chat:viewinfo',user_name_edit)
         
-    return render(request,"user/edit_info.html",{"info_entity":info_entity})
+    return render(request,"user/edit_info.html",{"info_entity":info_entity, 'gmail': request.user.email})
 
 @login_required(login_url='Chat:user')
 def ChangePass(request):

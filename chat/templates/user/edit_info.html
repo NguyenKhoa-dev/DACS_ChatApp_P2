@@ -14,8 +14,9 @@
                 <img id="avatar-info" src="{{info_entity.imagelink.url}}">    
             </div> 
             <div class="config-info">
-                <label for="datepicker">User Name: <input type="text" name="username" id="user-name-info" value={{info_entity.user}}></label>  
-                <label for="datepicker">Day of birth: <input type="date" name="birthday" value="{{info_entity.birthday|date:'Y-m-d'}}"></label>  
+                <label for="user-name-info">User Name: <input type="text" name="username" id="user-name-info" value={{info_entity.user}}></label>  
+                <label for="datepicker">Day of birth: <input type="date" name="birthday" id="datepicker" value="{{info_entity.birthday|date:'Y-m-d'}}"></label>  
+                <label for="user-email">Gmail: <input type="email" name="email" id="user-email"  value="{{gmail}}"></label>
                 <div class="btn-info">
                     <button type="submit">Confirm</button>
                 </div>          
