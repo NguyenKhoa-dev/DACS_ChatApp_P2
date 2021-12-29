@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --blue: #6299e0;
+    --lightBlue: #5ac4df;
+    --white: #fff;
+    --shadow: rgb(0, 0, 0, 0.2);
+    --red: #e10d16;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+input[type = 'email'], input[type = 'password'] {
+    width: 200px;
+    height: 25px;
+    outline: none;
+    text-indent: 5px;
+}
+
+input[type = 'submit'] {
+    padding: 10px 20px;
+    cursor: pointer;
+    background: linear-gradient(45deg, var(--blue), var(--lightBlue));
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-weight: bold;
+}
+
+input[type = 'submit']:hover {
+    background: linear-gradient(45deg, var(--lightBlue), var(--blue));
+    transition: linear 0.2s;
+}
+
+a.go-home {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+a.go-home:hover  {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+body {
+    width: 100%;
+    background: linear-gradient(45deg, var(--blue), var(--lightBlue));
+}
+
+body .reset_pwd_content {
+    margin: 20px 40px;
+    padding: 20px 40px;
+    background-color: var(--white);
+    border-radius: 5px;
+    box-shadow: 5px 5px 50px var(--shadow);
+}
+
+body .reset_pwd_content h1 {
+    text-align: center;
+    color: var(--blue);
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+body .reset_pwd_content ul {
+    box-sizing: content-box;
+    padding-left: 40px;
+    color: var(--red);
+}
